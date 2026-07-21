@@ -1,0 +1,17 @@
+/*.aux
+/*.log
+/*.snm
+/*.gz
+/*.nav
+/*.out
+/*.toc
+/*.upa
+/*.vrb
+/*.fls
+/*.dep
+/anim
+/_minted*
+moddate.tex
+/apo-lecture01-intro-en.pdf
+/apo01_2021.pdf
+/apo-lecture01-intro-cz.pdf

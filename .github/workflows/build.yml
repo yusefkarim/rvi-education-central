@@ -1,0 +1,37 @@
+name: Build
+
+on:
+  push:
+    branches: [main]
+
+# One build commit at a time; never cancel a build mid-push.
+concurrency:
+  group: build-${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  build:
+    # Guards against the bot's own commit re-triggering this workflow.
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0 # tools/build_common.py reads submodule commit history via `git ls-tree HEAD`
+      - uses: ./.github/actions/setup
+      - name: Regenerate common/, README.md, STANDARDS.md
+        run: uv run --project tools python -m tools.cli build .
+      - name: Commit generated changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add common README.md STANDARDS.md resources
+          if git diff --cached --quiet; then
+            echo "no generated changes; nothing to commit"
+            exit 0
+          fi
+          git commit -m "chore: regenerate common/, README.md, STANDARDS.md [skip ci]"
+          git push

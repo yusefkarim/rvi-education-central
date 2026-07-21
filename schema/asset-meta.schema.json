@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/riscv-international/rvi-education-central/schema/asset-meta.schema.json",
+  "title": "<asset>.meta.yml",
+  "description": "Optional sidecar next to a shareable asset. Every field is optional; it exists to override the folder-convention topic/language and to carry a license. See PLAN.md section 5.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "topic": {
+      "type": "string",
+      "description": "Overrides the topic implied by the nearest ancestor assets/<topic>/ directory."
+    },
+    "lang": {
+      "type": "string",
+      "pattern": "^[a-z]{2}$",
+      "description": "Overrides a _en/_cz filename suffix."
+    },
+    "title": { "type": "string", "minLength": 1 },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "license": {
+      "type": "string",
+      "enum": ["CC-BY-4.0", "CC-BY-SA-4.0", "MIT", "Apache-2.0", "BSD-3-Clause", "none"],
+      "description": "Required, directly or by cascade, for the asset to be admitted into common/. 'none' opts the asset out of pooling."
+    },
+    "attribution": {
+      "type": "string",
+      "description": "Free-text attribution line shown in the generated gallery."
+    }
+  }
+}

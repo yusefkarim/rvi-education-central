@@ -1,0 +1,14 @@
+# Registry of institutions publishing material in this repository.
+#
+# Every directory under resources/ must have a matching entry here, keyed by
+# the same slug (lowercase, hyphen-separated). This is what tools/validate.py
+# checks on every pull request, and it is what feeds the institution names
+# and links shown in the generated README.
+#
+# To add an institution: append an entry below, create resources/<slug>/,
+# and open a pull request. See CONTRIBUTING.md.
+
+ctu-prague:
+  name: Czech Technical University in Prague
+  country: CZ
+  homepage: https://www.cvut.cz/en

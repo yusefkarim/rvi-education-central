@@ -1,0 +1,21 @@
+name: Validate
+
+on:
+  pull_request:
+
+# Cancel superseded runs on the same PR so the required check reflects the latest push.
+concurrency:
+  group: validate-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+          fetch-depth: 0 # tools/build_common.py reads submodule commit history via `git ls-tree HEAD`
+      - uses: ./.github/actions/setup
+      - name: Run validation
+        run: uv run --project tools python -m tools.cli check .

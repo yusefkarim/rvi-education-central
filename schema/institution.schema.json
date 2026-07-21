@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/riscv-international/rvi-education-central/schema/institution.schema.json",
+  "title": "Institution registry entry",
+  "description": "One value in the top-level institutions.yml mapping, keyed by institution slug.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "country", "homepage"],
+  "properties": {
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Full institution name as shown in the generated README."
+    },
+    "country": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$",
+      "description": "ISO 3166-1 alpha-2 country code."
+    },
+    "homepage": {
+      "type": "string",
+      "format": "uri"
+    },
+    "logo": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Path, relative to the institution's resource directory, to a logo image checked into that directory."
+    }
+  }
+}

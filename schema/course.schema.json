@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/riscv-international/rvi-education-central/schema/course.schema.json",
+  "title": "course.yml",
+  "description": "Descriptor at the root of a resources/<institution-slug>/<course-slug>/ directory.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["title", "code", "language", "level"],
+  "properties": {
+    "title": { "type": "string", "minLength": 1 },
+    "code": { "type": "string", "minLength": 1 },
+    "language": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "pattern": "^[a-z]{2}$" },
+      "description": "ISO 639-1 codes present in this course."
+    },
+    "level": {
+      "type": "string",
+      "enum": ["undergraduate", "graduate", "other"]
+    },
+    "topics": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Informational summary of topics covered, shown in the generated index. Does not have to be exhaustive; the authoritative per-asset topic comes from assets/<topic>/ or a sidecar file."
+    },
+    "license": {
+      "type": "string",
+      "enum": ["CC-BY-4.0", "CC-BY-SA-4.0", "MIT", "Apache-2.0", "BSD-3-Clause", "none"],
+      "description": "Falls back to the resource default_license, then the repository-wide default (CC-BY-SA-4.0), if omitted."
+    },
+    "homepage": { "type": "string", "format": "uri" },
+    "external_assets": {
+      "type": "array",
+      "description": "Large binaries (recordings, oversized decks, datasets) referenced by link instead of committed. See PLAN.md section 5.2.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title", "url", "topic", "license"],
+        "properties": {
+          "title": { "type": "string", "minLength": 1 },
+          "url": { "type": "string", "format": "uri" },
+          "topic": { "type": "string" },
+          "license": {
+            "type": "string",
+            "enum": ["CC-BY-4.0", "CC-BY-SA-4.0", "MIT", "Apache-2.0", "BSD-3-Clause", "none"]
+          },
+          "lang": { "type": "string", "pattern": "^[a-z]{2}$" }
+        }
+      }
+    }
+  }
+}

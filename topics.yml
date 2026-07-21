@@ -1,0 +1,72 @@
+# Controlled vocabulary of asset topics (see PLAN.md section 5.1).
+#
+# An asset's resolved topic must be the slug of one of the entries below, or
+# validation fails with the list of valid slugs. Seeded from the topic set
+# already proven in references/comparch-slides/common, extended with
+# RISC-V-specific categories.
+#
+# To propose a new topic: open a GitHub issue describing the slug and its
+# scope, or open a pull request adding an entry directly. Keep descriptions
+# short; this file is meant to be read by a professor deciding where a
+# figure belongs, not just by the validator.
+
+- slug: cpu
+  label: CPU
+  description: Processor datapath, control, registers, and execution units.
+- slug: memory
+  label: Memory
+  description: Memory hierarchy, caches, and addressing.
+- slug: io
+  label: I/O
+  description: Input/output devices, interfaces, and peripherals.
+- slug: logic
+  label: Digital logic
+  description: Combinational and sequential logic building blocks.
+- slug: arch
+  label: Architectures
+  description: ISA and machine-architecture comparisons and surveys.
+- slug: abi
+  label: ABI
+  description: Calling conventions, register usage, and binary interfaces.
+- slug: computer
+  label: Computer organization
+  description: Whole-system organization, e.g. von Neumann and Harvard models.
+- slug: simulator
+  label: Simulator
+  description: Simulator screenshots and diagrams (e.g. QtRVSim).
+- slug: graphics
+  label: Graphics
+  description: Graphics and display hardware.
+- slug: numbers
+  label: Number representation
+  description: Integer and floating-point representation and arithmetic.
+- slug: applications
+  label: Applications
+  description: Application-level and systems-programming examples.
+- slug: overview
+  label: Overview
+  description: Course-introduction and high-level overview material.
+- slug: performance
+  label: Performance
+  description: Performance measurement and analysis.
+- slug: tex
+  label: LaTeX / typesetting
+  description: Typesetting and document-preparation aids.
+- slug: pipeline
+  label: Pipelining
+  description: Instruction pipelining, hazards, and forwarding.
+- slug: privileged
+  label: Privileged architecture
+  description: RISC-V privileged spec, modes, and CSRs.
+- slug: vector
+  label: Vector extension
+  description: RISC-V vector (RVV) extension.
+- slug: compressed
+  label: Compressed extension
+  description: RISC-V compressed instruction (RVC) encoding.
+- slug: toolchain
+  label: Toolchain
+  description: Compilers, assemblers, linkers, and build tooling.
+- slug: boot
+  label: Boot and firmware
+  description: Bootloaders, firmware, and early system bring-up.
