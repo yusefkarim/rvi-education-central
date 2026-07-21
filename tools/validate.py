@@ -32,6 +32,17 @@ def _check_schema(raw: object, schema: dict, label: str, errors: list[str]) -> N
         errors.append(f"{where}: {e.message}")
 
 
+def _check_license_enum_consistency(schemas: dict[str, tuple[dict, str]], errors: list[str]) -> None:
+    """The license allowlist is duplicated in model.py and each schema; catch drift immediately
+    rather than letting the two silently disagree about what's a valid license."""
+    for schema_name, (schema, field_name) in schemas.items():
+        enum = schema["properties"][field_name]["enum"]
+        if set(enum) != set(m.LICENSES):
+            errors.append(
+                f"{schema_name}: license enum {enum} is out of sync with tools/model.py LICENSES {list(m.LICENSES)}"
+            )
+
+
 def validate_repo(root: Path) -> list[str]:
     """Return human-readable error strings; an empty list means the repo is clean."""
     errors: list[str] = []
@@ -40,6 +51,15 @@ def validate_repo(root: Path) -> list[str]:
     resource_schema = _schema("resource.schema.json")
     course_schema = _schema("course.schema.json")
     asset_meta_schema = _schema("asset-meta.schema.json")
+
+    _check_license_enum_consistency(
+        {
+            "resource.schema.json": (resource_schema, "default_license"),
+            "course.schema.json": (course_schema, "license"),
+            "asset-meta.schema.json": (asset_meta_schema, "license"),
+        },
+        errors,
+    )
 
     repo = m.load(root)
     errors.extend(str(e) for e in repo.errors)
