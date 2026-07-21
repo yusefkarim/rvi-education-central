@@ -1,14 +1,14 @@
 # Contributing
 
-The goal is a contribution that fits in a coffee break. Everything past the
-minimal path below is optional and rewarded on the scorecard in
-[`STANDARDS.md`](STANDARDS.md), not required to be listed.
+Contributing does not take long, you might even be able to fit it within in a coffee break.
+Everything past the minimal path below is optional and rewarded on the scorecard in
+[`STANDARDS.md`](STANDARDS.md), but are not required to be listed.
 
 ## Minimal path
 
 1. Pick a slug for your institution: lowercase, hyphen-separated, e.g.
    `uc-berkeley`. Add an entry to [`institutions.yml`](institutions.yml)
-   with your name, country, and homepage.
+   with full institution name, country, and homepage.
 2. Create `resources/<your-slug>/resource.yml`:
    ```yaml
    institution: <your-slug>
@@ -16,7 +16,7 @@ minimal path below is optional and rewarded on the scorecard in
      - name: Your Name
        github: your-github-handle
    ```
-3. Add a `README.md` next to it — a normal one. Its first paragraph becomes
+3. Add a normal `README.md` next to it. Its first paragraph becomes
    the blurb on the root README, so nothing extra is needed.
 4. Drop your material into `resources/<your-slug>/<course-slug>/`, with a
    `course.yml`:
