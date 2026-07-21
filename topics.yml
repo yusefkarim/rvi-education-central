@@ -2,14 +2,17 @@
 #
 # An asset's resolved topic must be the slug of one of the entries below, or
 # validation fails with the list of valid slugs. Seeded from the topic set
-# already proven in references/comparch-slides/common, extended with
-# RISC-V-specific categories.
+# already proven in references/comparch-slides/common, extended for
+# breadth across a general computer-architecture curriculum and for
+# RISC-V-specific subjects.
 #
 # To propose a new topic: open a GitHub issue describing the slug and its
 # scope, or open a pull request adding an entry directly. Keep descriptions
 # short; this file is meant to be read by a professor deciding where a
-# figure belongs, not just by the validator.
+# figure belongs, not just by the validator. Grouped by comments below for
+# readability only — resolution only ever looks at the slug.
 
+# --- Core architecture and organization ---------------------------------
 - slug: cpu
   label: CPU
   description: Processor datapath, control, registers, and execution units.
@@ -31,30 +34,61 @@
 - slug: computer
   label: Computer organization
   description: Whole-system organization, e.g. von Neumann and Harvard models.
-- slug: simulator
-  label: Simulator
-  description: Simulator screenshots and diagrams (e.g. QtRVSim).
-- slug: graphics
-  label: Graphics
-  description: Graphics and display hardware.
 - slug: numbers
   label: Number representation
   description: Integer and floating-point representation and arithmetic.
-- slug: applications
-  label: Applications
-  description: Application-level and systems-programming examples.
-- slug: overview
-  label: Overview
-  description: Course-introduction and high-level overview material.
-- slug: performance
-  label: Performance
-  description: Performance measurement and analysis.
-- slug: tex
-  label: LaTeX / typesetting
-  description: Typesetting and document-preparation aids.
 - slug: pipeline
   label: Pipelining
   description: Instruction pipelining, hazards, and forwarding.
+- slug: prediction
+  label: Branch prediction
+  description: Branch predictors, speculation, and misprediction recovery.
+- slug: concurrency
+  label: Concurrency
+  description: Multicore execution, cache coherence, atomics, and synchronization.
+- slug: performance
+  label: Performance
+  description: Performance measurement and analysis.
+- slug: power
+  label: Power and energy
+  description: Energy efficiency, voltage/frequency scaling, and low-power design.
+- slug: security
+  label: Security
+  description: Cryptography, trusted execution, memory protection, and side channels.
+- slug: graphics
+  label: Graphics
+  description: Graphics and display hardware.
+- slug: applications
+  label: Applications
+  description: Application-level and systems-programming examples.
+- slug: embedded
+  label: Embedded systems
+  description: Embedded and real-time system design constraints.
+
+# --- Systems software -----------------------------------------------------
+- slug: os
+  label: Operating systems
+  description: Processes, scheduling, system calls, and OS-level concepts.
+- slug: interrupts
+  label: Interrupts and exceptions
+  description: Exceptions, interrupts, and trap handling.
+- slug: virtualization
+  label: Virtualization
+  description: Hypervisor support and virtual-machine execution.
+- slug: boot
+  label: Boot and firmware
+  description: Bootloaders, firmware, and early system bring-up.
+- slug: toolchain
+  label: Toolchain
+  description: Compilers, assemblers, linkers, and build tooling.
+- slug: debug
+  label: Debug and trace
+  description: On-chip debug, tracing, and the RISC-V debug module.
+- slug: verification
+  label: Verification
+  description: Testing, formal verification, and design validation.
+
+# --- RISC-V ISA extensions -------------------------------------------------
 - slug: privileged
   label: Privileged architecture
   description: RISC-V privileged spec, modes, and CSRs.
@@ -64,9 +98,14 @@
 - slug: compressed
   label: Compressed extension
   description: RISC-V compressed instruction (RVC) encoding.
-- slug: toolchain
-  label: Toolchain
-  description: Compilers, assemblers, linkers, and build tooling.
-- slug: boot
-  label: Boot and firmware
-  description: Bootloaders, firmware, and early system bring-up.
+
+# --- Course meta ------------------------------------------------------------
+- slug: simulator
+  label: Simulator
+  description: Simulator screenshots and diagrams (e.g. QtRVSim).
+- slug: overview
+  label: Overview
+  description: Course-introduction and high-level overview material.
+- slug: tex
+  label: LaTeX / typesetting
+  description: Typesetting and document-preparation aids.
