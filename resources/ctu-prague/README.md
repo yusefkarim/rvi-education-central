@@ -1,5 +1,10 @@
 # Czech Technical University in Prague
 
+
+Czech Technical University (CTU) in Prague.
+Course material is currently submitted as git submodules that do NOT follow the standards of this repo.
+We hope to restructure to adhere and pool resources in the future.
+
 The Computer Architectures course material (B35APO / BE5B35APO) at the
 Faculty of Electrical Engineering, brought in as a git submodule pointing
 at the real upstream repository,
