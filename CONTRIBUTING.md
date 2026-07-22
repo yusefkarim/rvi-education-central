@@ -33,10 +33,6 @@ Everything past the minimal path below is optional and rewarded on the scorecard
 Any format is welcome: LaTeX, Markdown, PDF, PPTX, SVG, Jupyter notebooks.
 Nothing here builds your material, only checks its structure and metadata.
 
-Prefer not to type this by hand? `uv run --project tools python -m tools.cli
-new-resource <slug> --name "..." --maintainer-name "..." --maintainer-github
-...` scaffolds steps 2–3 for you.
-
 ## Check your work before opening a pull request
 
 ```
