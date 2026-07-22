@@ -2,5 +2,5 @@ institution: ctu-prague
 maintainers:
   - name: Pavel Pisa
   - name: Petr Stepan
-# default_license omitted: falls back to the repository-wide default, CC-BY-SA-4.0,
-# which matches the license already used by the upstream comparch-slides material.
+# default_license omitted: the submodule carries its own CC BY-SA license
+# (see its README), so the repository-wide default is not what applies here.

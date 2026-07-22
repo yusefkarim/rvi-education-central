@@ -108,9 +108,17 @@ external_assets:
 Already maintain your material in your own repository? Add it as a git
 submodule at `resources/<your-slug>/<course-slug>` instead of copying files
 in. It must be self-describing (its own `course.yml`, `README.md`, and
-`assets/<topic>/` layout) — once checked out, it's validated exactly like
-directly committed material. See `PLAN.md` section 5.3 for the mechanics,
-including how galleries embed images from a submodule.
+`assets/<topic>/` layout) to reach the same tiers as directly committed
+material — see `PLAN.md` section 5.3 for the mechanics, including how
+galleries embed images from a submodule and why the repository's default
+license does not apply to submodule content.
+
+[`resources/ctu-prague`](resources/ctu-prague) is a live example: a
+submodule pointing at a real institution's own repository, which predates
+this repository's conventions and so is validated and listed without being
+pooled. [`resources/aurora-ridge`](resources/aurora-ridge) is the companion
+example of the direct-files path, fully structured and pooled, for
+comparison.
 
 ## Licensing
 

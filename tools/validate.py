@@ -79,8 +79,9 @@ def validate_repo(root: Path) -> list[str]:
 
         for course in resource.courses:
             course_yml = root / course.path / "course.yml"
-            raw = yaml.safe_load(course_yml.read_text(encoding="utf-8")) or {}
-            _check_schema(raw, course_schema, str(course_yml.relative_to(root)), errors)
+            if course_yml.exists():
+                raw = yaml.safe_load(course_yml.read_text(encoding="utf-8")) or {}
+                _check_schema(raw, course_schema, str(course_yml.relative_to(root)), errors)
 
             for asset in course.assets:
                 meta_path = root / asset.path.with_name(asset.path.name + m.ASSET_META_SUFFIX)

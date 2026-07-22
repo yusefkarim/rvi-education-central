@@ -1,6 +1,0 @@
-# Enrichment only: topic and license both fall through to the folder
-# convention and the license cascade unchanged. This sidecar exists to add
-# a friendlier title and attribution for the gallery.
-title: Von Neumann computer organization
-tags: [von-neumann, organization]
-attribution: "CTU Prague, B35APO course"

@@ -1,0 +1,3 @@
+[submodule "resources/ctu-prague/comparch-slides"]
+	path = resources/ctu-prague/comparch-slides
+	url = https://github.com/cvut/comparch-slides.git

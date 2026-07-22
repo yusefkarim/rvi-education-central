@@ -1,0 +1,11 @@
+title: Computer Systems and Architecture
+code: CPSC313
+language: [en]
+level: undergraduate
+topics: [cpu, memory, security]
+external_assets:
+  - title: Full lecture recording, secure enclaves
+    url: https://videos.example.edu/cpsc313/lecture-02.mp4
+    topic: security
+    license: CC-BY-SA-4.0
+    lang: en

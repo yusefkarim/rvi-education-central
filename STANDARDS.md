@@ -14,4 +14,5 @@ how to move up.
 
 | Institution | Tier | Courses | Pooled assets |
 |---|---|---|---|
-| [Czech Technical University in Prague](resources/ctu-prague) | 🥇 Pooled | 1 | 19 |
+| [Aurora Ridge University](resources/aurora-ridge) | 🥇 Pooled | 1 | 3 |
+| [Czech Technical University in Prague](resources/ctu-prague) | ⬜ Listed | 1 | 0 |

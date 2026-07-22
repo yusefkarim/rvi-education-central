@@ -262,7 +262,14 @@ def _load_course_assets(
                     f"unresolved topic '{topic}'; must be one of: {', '.join(sorted(topics))}",
                 ))
             lang = meta.get("lang") or _resolve_lang_from_filename(f.name)
-            license_ = meta.get("license") or course_license or resource_default_license or DEFAULT_LICENSE
+            if is_submodule:
+                # Submodule content is under its own authorship; the repository-wide default
+                # must never silently relicense it (PLAN.md section 5.3). Only an explicit
+                # license, from the sidecar or the submodule's own course.yml, admits it to
+                # the pool. No resource/repo-default fallback here.
+                license_ = meta.get("license") or course_license or "none"
+            else:
+                license_ = meta.get("license") or course_license or resource_default_license or DEFAULT_LICENSE
             if license_ not in LICENSES:
                 errors.append(ModelError(str(f.relative_to(root)), f"invalid license '{license_}'"))
             assets.append(Asset(
@@ -297,17 +304,21 @@ def _load_course(
 
     is_submodule = rel.as_posix() in gitmodules
     course_yml = course_dir / "course.yml"
+    data: dict = {}
     if not course_yml.exists():
         if is_submodule and not any(course_dir.iterdir()):
             errors.append(ModelError(str(rel), "submodule looks uninitialized; check it out with --recursive"))
-        else:
-            errors.append(ModelError(str(rel), "missing course.yml"))
-        return None
-
-    data = _load_yaml(course_yml)
-    if not isinstance(data, dict):
-        errors.append(ModelError(str(course_yml.relative_to(root)), "course.yml must be a YAML mapping"))
-        return None
+            return None
+        # No descriptor: still modeled, with blank metadata, so assets under the folder
+        # convention stay discoverable and the directory can still reach "Listed" on the
+        # scorecard. This is deliberate — see PLAN.md sections 8-9: a missing course.yml
+        # is a lower tier, not a validation failure. Real third-party content (e.g. a
+        # submodule that predates this repo's conventions) hits exactly this path.
+    else:
+        data = _load_yaml(course_yml)
+        if not isinstance(data, dict):
+            errors.append(ModelError(str(course_yml.relative_to(root)), "course.yml must be a YAML mapping"))
+            data = {}
 
     course_license = data.get("license")
 
@@ -379,9 +390,9 @@ def _load_resource(
     resource_yml = resource_dir / "resource.yml"
     maintainers: list[dict] = []
     default_license: str | None = None
-    if not resource_yml.exists():
-        errors.append(ModelError(str(rel), "missing resource.yml"))
-    else:
+    # A missing resource.yml is not a validation error, only a lower scorecard tier
+    # (see PLAN.md sections 8-9): "a folder of correctly named PDFs" is meant to qualify.
+    if resource_yml.exists():
         data = _load_yaml(resource_yml)
         if not isinstance(data, dict):
             errors.append(ModelError(str(resource_yml.relative_to(root)), "resource.yml must be a YAML mapping"))

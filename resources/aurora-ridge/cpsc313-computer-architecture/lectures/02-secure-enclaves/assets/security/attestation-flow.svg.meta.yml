@@ -1,0 +1,4 @@
+# Opt-out: this specific diagram references an institution-specific verifier
+# setup the maintainers don't want pooled. Still hosted, just not shared.
+title: Remote attestation flow (institution-specific)
+license: none

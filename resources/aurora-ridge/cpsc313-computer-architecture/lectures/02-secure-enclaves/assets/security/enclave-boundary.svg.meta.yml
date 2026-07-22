@@ -1,0 +1,4 @@
+# Enrichment only: topic and license both fall through unchanged. This
+# sidecar exists to add a friendlier title and tags for the gallery.
+title: Enclave trust boundary
+tags: [tee, enclave, isolation]
