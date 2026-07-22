@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/riscv-international/rvi-education-central/schema/asset-meta.schema.json",
+  "$id": "https://github.com/riscv-international/rvi-education-central/_schema/asset-meta.schema.json",
   "title": "<asset>.meta.yml",
   "description": "Optional sidecar next to a shareable asset. Every field is optional; it exists to override the folder-convention topic/language and to carry a license. See PLAN.md section 5.",
   "type": "object",

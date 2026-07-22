@@ -15,7 +15,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
-          fetch-depth: 0 # tools/build_common.py reads submodule commit history via `git ls-tree HEAD`
+          fetch-depth: 0 # _tools/build_common.py reads submodule commit history via `git ls-tree HEAD`
       - uses: ./.github/actions/setup
       - name: Run validation
-        run: uv run --project tools python -m tools.cli check .
+        run: uv run --project _tools python -m _tools.cli check .

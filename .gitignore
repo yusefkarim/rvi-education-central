@@ -2,8 +2,8 @@
 __pycache__/
 *.pyc
 
-# uv-managed virtual environment for tools/ (uv.lock IS committed, for reproducible CI)
-tools/.venv/
+# uv-managed virtual environment for _tools/ (uv.lock IS committed, for reproducible CI)
+_tools/.venv/
 
 # Local-only reference material (has its own nested .git); not part of the repository itself.
 /references/

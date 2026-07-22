@@ -12,5 +12,5 @@ reuse, set `license: none` instead — see `CONTRIBUTING.md` for details.
 
 ## Checklist
 
-- [ ] `uv run --project tools python -m tools.cli check .` passes locally
+- [ ] `uv run --project _tools python -m _tools.cli check .` passes locally
 - [ ] Institution/course/lecture directory names follow the naming convention

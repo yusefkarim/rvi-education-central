@@ -36,7 +36,7 @@ Nothing here builds your material, only checks its structure and metadata.
 ## Check your work before opening a pull request
 
 ```
-uv run --project tools python -m tools.cli check .
+uv run --project _tools python -m _tools.cli check .
 ```
 
 This runs exactly what the `validate` workflow runs on your pull request,

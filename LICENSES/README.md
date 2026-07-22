@@ -1,7 +1,7 @@
 # Accepted licenses
 
 This repository accepts a fixed allowlist of open licenses, enforced by the
-`license` enum in every schema under `schema/`. Each entry below links to the
+`license` enum in every schema under `_schema/`. Each entry below links to the
 canonical, authoritative legal text; full license text is deliberately not
 vendored into this repository so this directory never goes stale relative to
 the license steward's own copy.

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/riscv-international/rvi-education-central/schema/resource.schema.json",
+  "$id": "https://github.com/riscv-international/rvi-education-central/_schema/resource.schema.json",
   "title": "resource.yml",
   "description": "Descriptor at the root of a resources/<institution-slug>/ directory.",
   "type": "object",

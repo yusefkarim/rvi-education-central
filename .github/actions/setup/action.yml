@@ -1,12 +1,12 @@
 name: Setup tools
 description: >
-  Install uv and sync tools/ dependencies. Assumes the caller has already run
+  Install uv and sync _tools/ dependencies. Assumes the caller has already run
   actions/checkout (with submodules: recursive) — a local composite action
   can't check out the repo it lives in before the runner can even find it.
 runs:
   using: composite
   steps:
     - uses: astral-sh/setup-uv@v3
-    - name: Sync tools/ dependencies
+    - name: Sync _tools/ dependencies
       shell: bash
-      run: uv sync --project tools
+      run: uv sync --project _tools
