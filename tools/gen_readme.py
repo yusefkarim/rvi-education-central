@@ -12,6 +12,7 @@ from pathlib import Path
 import click
 
 from . import model as m
+from .scorecard import TIER_BADGE, tier_for
 
 HEADER = """# RVI Education Central
 
@@ -27,7 +28,7 @@ not this file.
 """
 
 
-def render(repo: m.RepoModel) -> str:
+def render(root: Path, repo: m.RepoModel) -> str:
     lines = [HEADER, "## Institutions", ""]
 
     if not repo.resources:
@@ -39,7 +40,9 @@ def render(repo: m.RepoModel) -> str:
         name = institution.name if institution else resource.slug
         country = f" ({institution.country})" if institution and institution.country else ""
         homepage = institution.homepage if institution else None
-        heading = f"### [{name}]({homepage}){country}" if homepage else f"### {name}{country}"
+        title = f"[{name}]({homepage})" if homepage else name
+        badge = TIER_BADGE[tier_for(root, resource, repo.institutions)]
+        heading = f"### {title}{country} [{badge}](STANDARDS.md)"
         lines.append(heading)
         lines.append("")
         if resource.readme_summary:
@@ -71,7 +74,7 @@ def render(repo: m.RepoModel) -> str:
 
 def build(root: Path) -> None:
     repo = m.load(root)
-    (root / "README.md").write_text(render(repo), encoding="utf-8")
+    (root / "README.md").write_text(render(root, repo), encoding="utf-8")
 
 
 @click.command()
