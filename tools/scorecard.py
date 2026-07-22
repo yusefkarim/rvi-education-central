@@ -7,6 +7,7 @@ one course.yml watches their tier rise on the next merge.
 from __future__ import annotations
 
 import json
+import shutil
 from pathlib import Path
 
 import click
@@ -14,6 +15,7 @@ import click
 from . import model as m
 
 MIN_SUMMARY_LEN = 40  # heuristic floor for a README first paragraph to count as "documented"
+BADGES_DIR_NAME = "badges"
 
 TIER_ORDER = {"Pooled": 4, "Documented": 3, "Structured": 2, "Listed": 1, "Unlisted": 0}
 TIER_BADGE = {
@@ -111,9 +113,21 @@ def build(root: Path) -> None:
     repo = m.load(root)
     (root / "STANDARDS.md").write_text(render(root, repo), encoding="utf-8")
 
+    # badges/ is bot-owned, like common/: wipe and regenerate every run so resources/
+    # stays entirely static and user-defined.
+    badges_dir = root / BADGES_DIR_NAME
+    if badges_dir.exists():
+        for path in badges_dir.iterdir():
+            if path.suffix != ".json":
+                raise SystemExit(
+                    f"{path.relative_to(root)} is not a generated badge; refusing to wipe {BADGES_DIR_NAME}/"
+                )
+        shutil.rmtree(badges_dir)
+    badges_dir.mkdir(parents=True)
+
     for resource in repo.resources:
         tier = tier_for(root, resource, repo.institutions)
-        badge_path = root / resource.path / "badge.json"
+        badge_path = badges_dir / f"{resource.slug}.json"
         badge_path.write_text(json.dumps(_badge_json(tier), indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
 
