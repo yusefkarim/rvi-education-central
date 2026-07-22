@@ -12,7 +12,7 @@ not this file.
 
 ## Institutions
 
-### [Aurora Ridge University](https://example.edu/aurora-ridge) (CA) [🥇 Pooled](STANDARDS.md)
+### [Aurora Ridge University](https://example.edu/aurora-ridge) (CA)
 
 A fictitious Canadian institution used as the worked example for the direct-files contribution path: material committed straight into this repository, with original placeholder figures rather than a real course. See [`resources/ctu-prague`](/resources/ctu-prague) for the companion example of the other contribution path, a git submodule pointing at a real institution's own repository.
 
@@ -20,7 +20,7 @@ A fictitious Canadian institution used as the worked example for the direct-file
 |---|---|---|---|
 | [Computer Systems and Architecture](resources/aurora-ridge/cpsc313-computer-architecture) | en | undergraduate | cpu, memory, security |
 
-### [Czech Technical University in Prague](https://www.cvut.cz/en) (CZ) [⬜ Listed](STANDARDS.md)
+### [Czech Technical University in Prague](https://www.cvut.cz/en) (CZ)
 
 The Computer Architectures course material (B35APO / BE5B35APO) at the Faculty of Electrical Engineering, brought in as a git submodule pointing at the real upstream repository, [`cvut/comparch-slides`](https://github.com/cvut/comparch-slides) — the worked example for the by-reference contribution path described in `CONTRIBUTING.md` and `PLAN.md` section 5.3.
 
@@ -33,4 +33,3 @@ The Computer Architectures course material (B35APO / BE5B35APO) at the Faculty o
 Figures and diagrams contributed under an open license are pooled by topic under [`common/`](common/); browse a topic's `README.md` for a gallery, for example [`common/cpu`](common/cpu).
 
 See [`STANDARDS.md`](STANDARDS.md) for the per-institution compliance scorecard.
-

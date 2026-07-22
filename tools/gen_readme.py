@@ -41,8 +41,8 @@ def render(root: Path, repo: m.RepoModel) -> str:
         country = f" ({institution.country})" if institution and institution.country else ""
         homepage = institution.homepage if institution else None
         title = f"[{name}]({homepage})" if homepage else name
-        badge = TIER_BADGE[tier_for(root, resource, repo.institutions)]
-        heading = f"### {title}{country} [{badge}](STANDARDS.md)"
+        emoji = TIER_BADGE[tier_for(root, resource, repo.institutions)].split(" ", 1)[0]
+        heading = f"### {title}{country} [{emoji}](STANDARDS.md)"
         lines.append(heading)
         lines.append("")
         if resource.readme_summary:
