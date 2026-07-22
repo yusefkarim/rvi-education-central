@@ -14,7 +14,7 @@ not this file.
 
 ### [Aurora Ridge University](https://example.edu/aurora-ridge) (CA) [🥇](STANDARDS.md)
 
-A fictitious Canadian institution used as the worked example for the direct-files contribution path: material committed straight into this repository, with original placeholder figures rather than a real course. See [`resources/ctu-prague`](/resources/ctu-prague) for the companion example of the other contribution path, a git submodule pointing at a real institution's own repository.
+A fictitious Canadian institution used as the worked example for the direct-files contribution path.
 
 | Course | Languages | Level | Topics |
 |---|---|---|---|
@@ -22,7 +22,7 @@ A fictitious Canadian institution used as the worked example for the direct-file
 
 ### [Czech Technical University in Prague](https://www.cvut.cz/en) (CZ) [⬜](STANDARDS.md)
 
-The Computer Architectures course material (B35APO / BE5B35APO) at the Faculty of Electrical Engineering, brought in as a git submodule pointing at the real upstream repository, [`cvut/comparch-slides`](https://github.com/cvut/comparch-slides) — the worked example for the by-reference contribution path described in `CONTRIBUTING.md` and `PLAN.md` section 5.3.
+Czech Technical University (CTU) in Prague. Course material is currently submitted as git submodules that do NOT follow the standards of this repo. We hope to restructure to adhere and pool resources in the future.
 
 | Course | Languages | Level | Topics |
 |---|---|---|---|
