@@ -109,9 +109,11 @@ Already maintain your material in your own repository? Add it as a git
 submodule at `resources/<your-slug>/<course-slug>` instead of copying files
 in. It must be self-describing (its own `course.yml`, `README.md`, and
 `assets/<topic>/` layout) to reach the same tiers as directly committed
-material — see `PLAN.md` section 5.3 for the mechanics, including how
-galleries embed images from a submodule and why the repository's default
-license does not apply to submodule content.
+material. A pooled image from a submodule is embedded in its topic gallery
+as a `raw.githubusercontent.com` link pinned to the exact commit the
+submodule is checked out at, not copied into this repository. The
+repository's default license does not apply to submodule content either
+(see Licensing below); it needs its own explicit license to be pooled.
 
 [`resources/ctu-prague`](resources/ctu-prague) is a live example: a
 submodule pointing at a real institution's own repository, which predates

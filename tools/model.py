@@ -264,9 +264,9 @@ def _load_course_assets(
             lang = meta.get("lang") or _resolve_lang_from_filename(f.name)
             if is_submodule:
                 # Submodule content is under its own authorship; the repository-wide default
-                # must never silently relicense it (PLAN.md section 5.3). Only an explicit
-                # license, from the sidecar or the submodule's own course.yml, admits it to
-                # the pool. No resource/repo-default fallback here.
+                # must never silently relicense it. Only an explicit license, from the sidecar
+                # or the submodule's own course.yml, admits it to the pool. No resource/repo-default
+                # fallback here.
                 license_ = meta.get("license") or course_license or "none"
             else:
                 license_ = meta.get("license") or course_license or resource_default_license or DEFAULT_LICENSE
@@ -311,9 +311,9 @@ def _load_course(
             return None
         # No descriptor: still modeled, with blank metadata, so assets under the folder
         # convention stay discoverable and the directory can still reach "Listed" on the
-        # scorecard. This is deliberate — see PLAN.md sections 8-9: a missing course.yml
-        # is a lower tier, not a validation failure. Real third-party content (e.g. a
-        # submodule that predates this repo's conventions) hits exactly this path.
+        # scorecard. This is deliberate: a missing course.yml is a lower tier, not a
+        # validation failure. Real third-party content (e.g. a submodule that predates
+        # this repo's conventions) hits exactly this path.
     else:
         data = _load_yaml(course_yml)
         if not isinstance(data, dict):
@@ -390,8 +390,8 @@ def _load_resource(
     resource_yml = resource_dir / "resource.yml"
     maintainers: list[dict] = []
     default_license: str | None = None
-    # A missing resource.yml is not a validation error, only a lower scorecard tier
-    # (see PLAN.md sections 8-9): "a folder of correctly named PDFs" is meant to qualify.
+    # A missing resource.yml is not a validation error, only a lower scorecard tier:
+    # "a folder of correctly named PDFs" is meant to qualify.
     if resource_yml.exists():
         data = _load_yaml(resource_yml)
         if not isinstance(data, dict):

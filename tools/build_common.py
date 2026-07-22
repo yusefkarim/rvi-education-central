@@ -2,7 +2,7 @@
 
 common/ is entirely derived from the model: every run wipes and rebuilds it,
 so the only way to change its contents is to change a descriptor or asset
-under resources/ and re-run. See PLAN.md section 5.
+under resources/ and re-run.
 """
 from __future__ import annotations
 

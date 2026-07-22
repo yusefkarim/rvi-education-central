@@ -23,6 +23,5 @@ Canonical texts:
 - Apache-2.0: https://www.apache.org/licenses/LICENSE-2.0
 - BSD-3-Clause: https://opensource.org/license/bsd-3-clause
 
-See `PLAN.md` section 6 for the license cascade and the repository-wide
-default, and `CONTRIBUTING.md` for how the default applies to your pull
-request.
+See `CONTRIBUTING.md` for the license cascade, the repository-wide default,
+and how it applies to your pull request.

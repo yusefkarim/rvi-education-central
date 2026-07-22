@@ -1,4 +1,4 @@
-# Controlled vocabulary of asset topics (see PLAN.md section 5.1).
+# Controlled vocabulary of asset topics.
 #
 # An asset's resolved topic must be the slug of one of the entries below, or
 # validation fails with the list of valid slugs. Seeded from the topic set
