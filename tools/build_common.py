@@ -103,7 +103,11 @@ def _write_gallery(
                 url = _raw_url(repo.root, repo.gitmodules, course, asset)
                 preview = f"![{title}]({url})" if url else "_submodule asset, not yet pinned_"
             else:
-                preview = f"![{title}]({name})"
+                # Link straight to the file under resources/, not the common/ symlink:
+                # GitHub's web UI and raw content serving don't dereference symlinks, so an
+                # image tag pointing at the symlink itself renders as broken.
+                real_path = os.path.relpath(repo.root / asset.path, start=topic_dir)
+                preview = f"![{title}]({real_path})"
         lines.append(f"| {preview} | {title} | {inst_name} | {lang} | {asset.license} |")
 
     for ea, course in _external_for_topic(repo, topic):

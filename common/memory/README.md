@@ -6,4 +6,4 @@ Memory hierarchy, caches, and addressing.
 
 | Preview | Title | Institution | Language | License |
 |---|---|---|---|---|
-| ![Memory hierarchy, L1 through DRAM](aurora-ridge__cache-hierarchy.svg) | Memory hierarchy, L1 through DRAM | Aurora Ridge University | - | CC-BY-4.0 |
+| ![Memory hierarchy, L1 through DRAM](../../resources/aurora-ridge/cpsc313-computer-architecture/lectures/01-datapath/assets/memory/cache-hierarchy.svg) | Memory hierarchy, L1 through DRAM | Aurora Ridge University | - | CC-BY-4.0 |
