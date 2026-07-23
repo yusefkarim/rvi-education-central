@@ -1,0 +1,5 @@
+# Example University (Aurora Ridge)
+
+A fictitious Canadian institution used as the worked example for the direct-files contribution path. The `00-` slug prefix keeps it pinned to the top of every generated listing, so a new contributor always lands on a complete reference first.
+
+Material is committed straight into this repository, with original placeholder figures rather than real course content. Two courses show how one institution hosts several courses side by side: [`cpsc313-computer-architecture`](cpsc313-computer-architecture) is an undergraduate course leaning on the repository-default license, and [`ece450-riscv-soc-design`](ece450-riscv-soc-design) is a graduate course that sets its own license and exercises the remaining metadata features (filename language suffixes, sidecar `topic`/`lang` overrides, and `attribution`). See [`resources/ctu-prague`](/resources/ctu-prague) for the companion example of the other contribution path, a git submodule pointing at a real institution's own repository.

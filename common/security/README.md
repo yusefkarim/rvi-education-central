@@ -6,5 +6,5 @@ Cryptography, trusted execution, memory protection, and side channels.
 
 | Preview | Title | Institution | Language | License |
 |---|---|---|---|---|
-| ![Enclave trust boundary](../../resources/aurora-ridge/cpsc313-computer-architecture/lectures/02-secure-enclaves/assets/security/enclave-boundary.svg) | Enclave trust boundary | Aurora Ridge University | - | CC-BY-SA-4.0 |
-| [external link](https://videos.example.edu/cpsc313/lecture-02.mp4) | Full lecture recording, secure enclaves | Aurora Ridge University | en | CC-BY-SA-4.0 |
+| ![Enclave trust boundary](../../resources/00-example-university/cpsc313-computer-architecture/lectures/02-secure-enclaves/assets/security/enclave-boundary.svg) | Enclave trust boundary | Example University (Aurora Ridge) | - | CC-BY-SA-4.0 |
+| [external link](https://videos.example.edu/cpsc313/lecture-02.mp4) | Full lecture recording, secure enclaves | Example University (Aurora Ridge) | en | CC-BY-SA-4.0 |

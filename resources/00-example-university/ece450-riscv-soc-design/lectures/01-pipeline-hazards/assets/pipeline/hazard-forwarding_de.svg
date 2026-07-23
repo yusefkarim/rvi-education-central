@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 160" font-family="sans-serif" font-size="14">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#333"/>
+    </marker>
+  </defs>
+  <g fill="none" stroke="#333" stroke-width="2">
+    <rect x="10"  y="30" width="90" height="50" rx="6"/>
+    <rect x="120" y="30" width="90" height="50" rx="6"/>
+    <rect x="230" y="30" width="90" height="50" rx="6"/>
+    <rect x="340" y="30" width="90" height="50" rx="6"/>
+    <rect x="450" y="30" width="90" height="50" rx="6"/>
+    <path d="M275,80 C275,120 165,120 165,82" marker-end="url(#arrow)"/>
+  </g>
+  <g fill="#333" text-anchor="middle">
+    <text x="55"  y="60">IF</text>
+    <text x="165" y="60">ID</text>
+    <text x="275" y="60">EX</text>
+    <text x="385" y="60">MEM</text>
+    <text x="495" y="60">WB</text>
+    <text x="220" y="140">EX-Ergebnis weiterleiten</text>
+  </g>
+</svg>

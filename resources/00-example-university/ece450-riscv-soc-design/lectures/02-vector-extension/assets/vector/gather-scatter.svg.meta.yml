@@ -1,0 +1,5 @@
+# lang override: the filename carries no _de suffix, so the sidecar declares the
+# language explicitly. This is the alternative to the suffix convention used by
+# the pipeline figures.
+title: Vektor-Gather nach Index
+lang: de

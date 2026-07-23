@@ -8,10 +8,11 @@
 # To add an institution: append an entry below, create resources/<slug>/,
 # and open a pull request. See CONTRIBUTING.md.
 
-aurora-ridge:
-  name: Aurora Ridge University
+00-example-university:
+  name: Example University (Aurora Ridge)
   country: CA
-  homepage: https://example.edu/aurora-ridge # fictitious institution; illustrates the direct-files contribution path
+  homepage: https://example.edu/example-university # fictitious institution; illustrates the direct-files contribution path
+  logo: logo.svg # optional; path relative to the institution's resource directory
 
 ctu-prague:
   name: Czech Technical University in Prague

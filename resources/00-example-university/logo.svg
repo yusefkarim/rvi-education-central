@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" font-family="sans-serif">
+  <circle cx="60" cy="60" r="56" fill="none" stroke="#333" stroke-width="3"/>
+  <path d="M60 20 L92 78 L28 78 Z" fill="none" stroke="#333" stroke-width="3" stroke-linejoin="round"/>
+  <text x="60" y="66" fill="#333" font-size="22" font-weight="bold" text-anchor="middle">EU</text>
+</svg>

@@ -11,13 +11,14 @@ not this file.
 
 ## Institutions
 
-### [Aurora Ridge University](https://example.edu/aurora-ridge) (CA) [🥇](STANDARDS.md)
+### [Example University (Aurora Ridge)](https://example.edu/example-university) (CA) [🥇](STANDARDS.md)
 
-A fictitious Canadian institution used as the worked example for the direct-files contribution path.
+A fictitious Canadian institution used as the worked example for the direct-files contribution path. The `00-` slug prefix keeps it pinned to the top of every generated listing, so a new contributor always lands on a complete reference first.
 
 | Course | Languages | Level | Topics |
 |---|---|---|---|
-| [Computer Systems and Architecture](resources/aurora-ridge/cpsc313-computer-architecture) | en | undergraduate | cpu, memory, security |
+| [Computer Systems and Architecture](resources/00-example-university/cpsc313-computer-architecture) | en | undergraduate | cpu, memory, security |
+| [RISC-V SoC Design](resources/00-example-university/ece450-riscv-soc-design) | en, de | graduate | pipeline, vector, privileged, interrupts, toolchain |
 
 ### [Czech Technical University in Prague](https://www.cvut.cz/en) (CZ) [⬜](STANDARDS.md)
 

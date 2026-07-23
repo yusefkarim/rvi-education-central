@@ -4,6 +4,12 @@ Contributing does not take long, you might even be able to fit it within in a co
 Everything past the minimal path below is optional and rewarded on the scorecard in
 [`STANDARDS.md`](STANDARDS.md), but are not required to be listed.
 
+[`resources/00-example-university`](resources/00-example-university) is a
+worked example that meets the highest (🥇 Pooled) tier: two courses with valid
+descriptors, documented READMEs, and pooled assets exercising every metadata
+feature. Copy its structure if you want a ready-made template of a fully proper
+contribution.
+
 ## Minimal path
 
 1. Pick a slug for your institution: lowercase, hyphen-separated, e.g.
@@ -114,9 +120,9 @@ repository's default license does not apply to submodule content either
 [`resources/ctu-prague`](resources/ctu-prague) is a live example: a
 submodule pointing at a real institution's own repository, which predates
 this repository's conventions and so is validated and listed without being
-pooled. [`resources/aurora-ridge`](resources/aurora-ridge) is the companion
-example of the direct-files path, fully structured and pooled, for
-comparison.
+pooled. [`resources/00-example-university`](resources/00-example-university)
+is the companion example of the direct-files path, fully structured and
+pooled across two courses, for comparison.
 
 ## Licensing
 

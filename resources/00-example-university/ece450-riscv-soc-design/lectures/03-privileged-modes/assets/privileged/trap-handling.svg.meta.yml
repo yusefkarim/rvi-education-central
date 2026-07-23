@@ -1,0 +1,5 @@
+# topic override: physically filed under assets/privileged/ for locality with the
+# rest of this lecture, but re-homed to the interrupts gallery, where trap handling
+# belongs. License cascades from the course-level MIT.
+title: Trap entry and return
+topic: interrupts

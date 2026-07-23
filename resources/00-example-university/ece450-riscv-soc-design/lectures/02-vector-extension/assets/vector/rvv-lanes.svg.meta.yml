@@ -1,0 +1,6 @@
+# Enrichment plus attribution: no topic/license override here (both cascade
+# through unchanged, the license coming from the course-level MIT), just a
+# friendlier gallery title, discovery tags, and a free-text attribution line.
+title: RVV vector lanes
+tags: [rvv, vector, simd]
+attribution: "Example University, ECE450 RISC-V SoC Design"

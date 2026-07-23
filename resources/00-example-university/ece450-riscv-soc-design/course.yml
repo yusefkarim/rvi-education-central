@@ -1,0 +1,18 @@
+title: RISC-V SoC Design
+code: ECE450
+language: [en, de]
+level: graduate
+topics: [pipeline, vector, privileged, interrupts, toolchain]
+# Course-level license. Overrides the resource/repository default for every
+# asset in this course that doesn't carry its own sidecar license, so the pooled
+# figures here land under MIT rather than the repo-wide CC-BY-SA-4.0.
+license: MIT
+homepage: https://example.edu/example-university/ece450
+external_assets:
+  # Large binaries referenced by link instead of committed. Covers the toolchain
+  # topic without checking a screencast into git.
+  - title: Toolchain bring-up screencast
+    url: https://videos.example.edu/ece450/toolchain-bringup.mp4
+    topic: toolchain
+    license: CC-BY-SA-4.0
+    lang: en

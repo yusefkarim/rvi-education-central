@@ -21,5 +21,5 @@ yet. That's expected, not an error — the validator models unstructured
 submodule content without failing CI, and it shows up here as **Listed**
 rather than **Structured** on the scorecard
 until course.yml and an `assets/<topic>/` layout are added upstream. See
-[`resources/aurora-ridge`](/resources/aurora-ridge) for the direct-files
-path with full structure and a pooled example instead.
+[`resources/00-example-university`](/resources/00-example-university) for the
+direct-files path with full structure and a pooled example instead.

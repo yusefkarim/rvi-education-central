@@ -6,4 +6,4 @@ Processor datapath, control, registers, and execution units.
 
 | Preview | Title | Institution | Language | License |
 |---|---|---|---|---|
-| ![datapath-overview](../../resources/aurora-ridge/cpsc313-computer-architecture/lectures/01-datapath/assets/cpu/datapath-overview.svg) | datapath-overview | Aurora Ridge University | - | CC-BY-SA-4.0 |
+| ![datapath-overview](../../resources/00-example-university/cpsc313-computer-architecture/lectures/01-datapath/assets/cpu/datapath-overview.svg) | datapath-overview | Example University (Aurora Ridge) | - | CC-BY-SA-4.0 |
