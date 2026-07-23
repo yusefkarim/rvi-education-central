@@ -7,9 +7,7 @@ under resources/ and re-run.
 from __future__ import annotations
 
 import os
-import re
 import shutil
-import subprocess
 from pathlib import Path
 
 import click
@@ -17,7 +15,6 @@ import click
 from . import model as m
 
 IMG_EXTS = {".svg", ".png", ".jpg", ".jpeg", ".gif", ".webp"}
-_OWNER_REPO_RE = re.compile(r"[:/](?P<owner>[^/]+)/(?P<repo>[^/]+?)(?:\.git)?/?$")
 
 
 def _namespaced_name(institution_slug: str, original_name: str, used: set[str]) -> str:
@@ -33,30 +30,12 @@ def _namespaced_name(institution_slug: str, original_name: str, used: set[str]) 
         n += 1
 
 
-def _submodule_owner_repo(url: str) -> tuple[str, str] | None:
-    match = _OWNER_REPO_RE.search(url)
-    return (match.group("owner"), match.group("repo")) if match else None
-
-
-def _submodule_commit(root: Path, submodule_path: str) -> str | None:
-    """The commit SHA the parent repo has pinned for a submodule, from the committed tree."""
-    try:
-        out = subprocess.run(
-            ["git", "-C", str(root), "ls-tree", "HEAD", "--", submodule_path],
-            capture_output=True, text=True, check=True, timeout=10,
-        ).stdout.strip()
-    except (subprocess.CalledProcessError, FileNotFoundError, subprocess.TimeoutExpired):
-        return None
-    fields = out.split()
-    return fields[2] if len(fields) >= 3 and fields[1] == "commit" else None
-
-
 def _raw_url(root: Path, gitmodules: dict[str, str], course: m.Course, asset: m.Asset) -> str | None:
     url = gitmodules.get(course.path.as_posix())
     if not url:
         return None
-    owner_repo = _submodule_owner_repo(url)
-    sha = _submodule_commit(root, course.path.as_posix())
+    owner_repo = m.submodule_owner_repo(url)
+    sha = m.submodule_commit(root, course.path.as_posix())
     if not owner_repo or not sha:
         return None
     owner, repo = owner_repo

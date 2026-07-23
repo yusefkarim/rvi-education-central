@@ -54,7 +54,14 @@ def render(root: Path, repo: m.RepoModel) -> str:
                 langs = ", ".join(course.languages) or "-"
                 topics = ", ".join(course.topics) or "-"
                 title = course.title or course.slug
-                lines.append(f"| [{title}]({course.path.as_posix()}) | {langs} | {course.level or '-'} | {topics} |")
+                # The name links to the in-repo path. For a submodule that path is a gitlink
+                # (it 404s on GitHub and for anyone who cloned without the submodule), so we
+                # also append a compact link to the upstream repo pinned at the vendored
+                # commit when it resolves. Both are shown so it's clear which is which.
+                link = f"[{title}]({course.path.as_posix()})"
+                if course.submodule_url:
+                    link += f" ([upstream ↗]({course.submodule_url}))"
+                lines.append(f"| {link} | {langs} | {course.level or '-'} | {topics} |")
             lines.append("")
 
     lines.append("## Shared asset pool")

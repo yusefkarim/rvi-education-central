@@ -26,7 +26,7 @@ Czech Technical University (CTU) in Prague. Course material is currently submitt
 
 | Course | Languages | Level | Topics |
 |---|---|---|---|
-| [comparch-slides](resources/ctu-prague/comparch-slides) | - | - | - |
+| [comparch-slides](resources/ctu-prague/comparch-slides) ([upstream ↗](https://github.com/cvut/comparch-slides/tree/2aaaf822b577634ec5e1e11a222f6852cb7e496a)) | - | - | - |
 
 ## Shared asset pool
 

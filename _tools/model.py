@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import configparser
 import re
+import subprocess
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -27,6 +28,9 @@ DEFAULT_LICENSE = "CC-BY-SA-4.0"
 ASSET_META_SUFFIX = ".meta.yml"
 ASSETS_DIR_NAME = "assets"
 LECTURE_KIND_DIRS = ("lectures", "labs")
+
+OWNER_REPO_RE = re.compile(r"[:/](?P<owner>[^/]+)/(?P<repo>[^/]+?)(?:\.git)?/?$")
+SCP_URL_RE = re.compile(r"^(?P<user>[^@]+)@(?P<host>[^:]+):(?P<path>.+)$")
 
 
 def find_repo_root(start: Path) -> Path:
@@ -99,6 +103,7 @@ class Course:
     external_assets: list[ExternalAsset]
     assets: list[Asset]
     is_submodule: bool
+    submodule_url: str | None = None  # upstream browse URL pinned at the vendored commit
     readme_summary: str | None = None
 
 
@@ -212,6 +217,50 @@ def load_gitmodules(root: Path) -> dict[str, str]:
     return out
 
 
+def submodule_owner_repo(url: str) -> tuple[str, str] | None:
+    """Parse the (owner, repo) pair out of a git remote URL, or None if it doesn't fit."""
+    match = OWNER_REPO_RE.search(url)
+    return (match.group("owner"), match.group("repo")) if match else None
+
+
+def submodule_commit(root: Path, submodule_path: str) -> str | None:
+    """The commit SHA the parent repo has pinned for a submodule, from the committed tree.
+
+    Reads the gitlink out of ``HEAD`` rather than the submodule's own checkout, so it
+    resolves even when the submodule has never been initialized (the case that makes the
+    plain in-repo path link fail on GitHub and for anyone who cloned without --recursive).
+    """
+    try:
+        out = subprocess.run(
+            ["git", "-C", str(root), "ls-tree", "HEAD", "--", submodule_path],
+            capture_output=True, text=True, check=True, timeout=10,
+        ).stdout.strip()
+    except (subprocess.CalledProcessError, FileNotFoundError, subprocess.TimeoutExpired):
+        return None
+    fields = out.split()
+    return fields[2] if len(fields) >= 3 and fields[1] == "commit" else None
+
+
+def submodule_browse_url(remote_url: str, sha: str) -> str | None:
+    """A web URL that browses a submodule's upstream at the pinned commit.
+
+    Uses the ``/tree/<sha>`` convention shared by GitHub and GitLab, so a reader following
+    the link lands on exactly the revision this repo has vendored, not a moving branch tip.
+    scp-style remotes (``git@host:owner/repo``) are normalized to https first. Returns None
+    when there's no SHA to pin to; the caller then falls back to the plain in-repo path.
+    """
+    if not sha:
+        return None
+    url = remote_url.strip()
+    scp = SCP_URL_RE.match(url)
+    if scp:
+        url = f"https://{scp.group('host')}/{scp.group('path')}"
+    base = re.sub(r"\.git$", "", url).rstrip("/")
+    if not base:
+        return None
+    return f"{base}/tree/{sha}"
+
+
 def _resolve_lang_from_filename(name: str) -> str | None:
     match = LANG_SUFFIX_RE.search(name)
     return match.group(1) if match else None
@@ -303,6 +352,10 @@ def _load_course(
         errors.append(ModelError(str(rel), f"course slug '{course_slug}' does not match ^[a-z0-9]+(-[a-z0-9]+)*$"))
 
     is_submodule = rel.as_posix() in gitmodules
+    submodule_url = (
+        submodule_browse_url(gitmodules[rel.as_posix()], submodule_commit(root, rel.as_posix()) or "")
+        if is_submodule else None
+    )
     course_yml = course_dir / "course.yml"
     data: dict = {}
     if not course_yml.exists():
@@ -363,6 +416,7 @@ def _load_course(
         external_assets=external_assets,
         assets=[],
         is_submodule=is_submodule,
+        submodule_url=submodule_url,
         readme_summary=_first_paragraph(course_dir / "README.md"),
     )
     course.assets = _load_course_assets(
